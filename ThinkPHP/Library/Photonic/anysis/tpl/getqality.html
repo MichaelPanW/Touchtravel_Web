@@ -1,0 +1,53 @@
+<table class="table">
+     <tr class="gray"><th style="width:9%;"></th><th style="width:13%;">一</th><th style="width:13%;">二</th><th style="width:13%;">三</th><th style="width:13%;">四</th><th style="width:13%;">五</th><th style="width:13%; color:red;">六</th><th style="width:13%;color:red;">日</th></tr>
+     <tbody class="result">
+     <tr class="add color1" id="d1">
+     <td>電訪數</td>
+      <{foreach from=$phonechat item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     
+     <tr class="add" id="d2"><td>外訪數</td>
+     <{foreach from=$selfchat item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     <tr class="add color1" id="d3"><td>不排斥</td>
+     
+      <{foreach from=$bpq item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     
+     </tr>
+     <tr class="add" id="d4"><td>有意願</td> 
+     <{foreach from=$yyy item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     
+     <tr class="add color1" id="d5"><td>被阻擋</td> 
+     <{foreach from=$bzd item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     
+     <tr class="add" id="d6"><td>例行事</td> 
+     <{foreach from=$rbz item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     
+     <tr class="add color1" id="d7"><td>無意願</td> 
+     <{foreach from=$wyy item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     
+     <tr class="add" id="d8"><td>轉開放</td> 
+     <{foreach from=$dsj item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     </tbody>
+  </table>

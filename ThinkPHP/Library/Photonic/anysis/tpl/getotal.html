@@ -1,0 +1,50 @@
+<table class="table">
+     <tr class="gray"><th style="width:8%;"></th><th style="width:8%;">一</th><th style="width:8%;">二</th><th style="width:8%;">三</th><th style="width:8%;">四</th><th style="width:8%;">五</th><th style="width:8%;color:red;">六</th><th style="width:8%;color:red;">日</th><th>總訪問數</th><th>平均目標訪問數</th><th>目標訪問數</th></tr>
+     <tbody class="result">
+<tr class="color1"><td><b>新進客戶</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <{foreach from=$newcm item=item key=key}>
+   <{if $key neq 0}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      </tr> 
+      <{/if}>
+   <{/foreach}>
+<tr class="color1"><td><b>電話轉入</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<{foreach from=$precords item=item key=key}>
+<{if $key neq 0}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      </tr> 
+       <{/if}>
+   <{/foreach}>
+<tr class="color1"><td><b>轉入潛在</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<{foreach from=$qiancm item=item key=key}>
+<{if $key neq 0}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      </tr> 
+       <{/if}>
+   <{/foreach}>
+<tr class="color1"><td><b>轉入現有</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<{foreach from=$alreadcm item=item key=key}>
+<{if $key neq 0}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      </tr> 
+       <{/if}>
+   <{/foreach}>
+     </tbody>
+  </table>

@@ -1,0 +1,1 @@
+<?php	namespace Trade\Controller;	use Think\Controller;	class GlobalController extends Controller 	{	function _initialize() 	{		$title="TouchTravel 你最貼心的旅遊夥伴";		$this->assign('title',$title);	}	}?>	

@@ -1,0 +1,35 @@
+<table class="table">
+     <tr class="gray">
+     	<th style="width:9%;"></th><th style="width:13%;">一</th>
+     	<th style="width:13%;">二</th><th style="width:13%;">三</th>
+     	<th style="width:13%;">四</th><th style="width:13%;">五</th>
+     	<th style="width:13%; color:red;">六</th><th style="width:13%;color:red;">日</th>
+     </tr>
+     <tbody class="result">
+		<tr class="add color1" id="d1"><td>新進客戶</td>
+      	<{foreach from=$newcm item=item}>
+     		<td><{$item.salescount}></td>
+     	<{/foreach}>
+     	</tr>
+     
+     <tr class="add" id="d2"><td class="gray sp1">電話轉入</td>
+     <{foreach from=$precords item=item}>
+     <td><{$item.phonecount}></td>
+     <{/foreach}>
+     </tr>
+     
+     <tr class="add color1" id="d3"><td>轉入潛在</td>
+     
+      <{foreach from=$qiancm item=item}>
+     <td><{$item.salescount}></td>
+     <{/foreach}>
+     
+     </tr>
+     <tr class="add" id="d4">
+     	<td>轉入現有</td> 
+     	<{foreach from=$alreadcm item=item}>
+     	<td><{$item.salescount}></td>
+     	<{/foreach}>
+     </tr>
+     </tbody>
+  </table>

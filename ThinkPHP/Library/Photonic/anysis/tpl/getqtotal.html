@@ -1,0 +1,108 @@
+<table class="table">
+     <tr class="gray"><th style="width:8%;"></th><th style="width:8%;">一</th><th style="width:8%;">二</th><th style="width:8%;">三</th><th style="width:8%;">四</th><th style="width:8%;">五</th><th style="width:8%;color:red;">六</th><th style="width:8%;color:red;">日</th><th>總訪問數</th><th>平均目標訪問數</th><th>目標訪問數</th></tr>
+     <tbody class="result">
+<tr class="color1"><td><b>電訪數</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+   <{foreach from=$phonechat item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>" style="color:<{$colorarr.$key}>;">
+      <td align="right" style="color:black !important;"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td <{if $keysec gte 1 and $keysec lte 7}>
+             <{if $round1.$key gt $one}> 
+               style="color:red;" 
+             <{else}>
+               style="color:black;" 
+
+             
+             <{/if}>
+          <{/if}> 
+      
+      ><{$one}></td>
+      <{/foreach}>
+      </tr> 
+   <{/foreach}>
+<tr class="color1"><td><b>外訪數</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<{foreach from=$selfchat item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>" style="color:<{$colorarr1.$key}>;">
+      <td align="right" style="color:black !important;"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td <{if $keysec gte 1 and $keysec lte 7}>
+             <{if $round2.$key gt $one}> 
+               style="color:red;" 
+             <{else}>
+               style="color:black;" 
+             <{/if}>
+          <{/if}> 
+      
+      ><{$one}></td>
+      <{/foreach}>
+      </tr> 
+   <{/foreach}>
+<tr class="color1"><td><b>不排斥</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>
+<{foreach from=$bpq item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      <td></td>
+      <td></td>
+      </tr> 
+   <{/foreach}>
+<tr class="color1"><td><b>有意願</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>
+<{foreach from=$yyy item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      <td></td>
+      <td></td>
+      </tr> 
+  <{/foreach}>     
+<tr class="color1"><td><b>被阻擋</b></td><td></td><td></td><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>
+<{foreach from=$bzd item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      <td></td>
+      <td></td>
+      </tr> 
+   <{/foreach}>
+<tr class="color1"><td><b>例行事</b></td><td></td><td></td><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>
+<{foreach from=$rbz item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      <td></td>
+      <td></td>
+      </tr> 
+ <{/foreach}>
+<tr class="color1"><td><b>無意願</b></td><td></td><td></td><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>
+<{foreach from=$wyy item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      <td></td>
+      <td></td>
+      </tr> 
+   <{/foreach}>
+<tr class="color1"><td><b>轉開放</b></td><td></td><td></td><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>
+<{foreach from=$dsj item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      <td></td>
+      <td></td>
+      </tr> 
+      
+   <{/foreach}>
+     </tbody>
+  </table>

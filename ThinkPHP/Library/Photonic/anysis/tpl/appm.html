@@ -1,0 +1,173 @@
+<{include file="header.html"}>
+<div class="content">
+<div class="content_body">
+<div class="content_menu">
+
+  <{foreach from=$sales item=one key=key}>
+  <h1 class="t" id='<{$one.id}>'><{$one.name}></h1>
+  <div  id="t<{$one.id}>">
+  <{if $one.id eq $id}>
+  <table class="table">
+     <tr class="gray"><th style="width:9%;"></th><th style="width:13%;">一</th><th style="width:13%;">二</th><th style="width:13%;">三</th><th style="width:13%;">四</th><th style="width:13%;">五</th><th style="width:13%; color:red;">六</th><th style="width:13%;color:red;">日</th></tr>
+     <tbody class="result">
+     <tr class="add color1" id="d1">
+     <td>約訪數量</td>
+      <{foreach from=$selfchat item=item}>
+     <td><{$item.rcount}></td>
+     <{/foreach}>
+     </tr>
+     
+     
+     </tbody>
+  </table>
+  <{else}>
+  <span>加載中，請稍候...</span>
+  <{/if}>
+  
+  </div>
+  <{/foreach}>
+  <h1 class="t" id='0'>總覽</h1>
+  <div  id="t0">
+  <span>加載中，請稍候...</span>
+  </div>
+  <div class="tip"><{$thweeks}></div>
+  <div class="tip detalis"></div>
+</div>
+<input type="hidden" value="<{$id}>" id="eid"  />
+<div style="position:relative; margin-top:5px; padding:10px; height:40px;"> 
+  <div style="float:left;"><a style="float:left; margin-top:5px;" href="./index.php?c=appm">本週</a> &nbsp;&nbsp;&nbsp;&nbsp;<form action="./index.php?c=appm" method="post" style="float:left; margin-left:10px;"><input type="text" name="d" id="cal" value="<{$dates}>" class="Wdate" onfocus="new WdatePicker()" /> <input type="submit" value="GO" name="calBtn" /></form></div>
+  <div style="position:absolute; right:10px;"><a style="margin-top:5px;"  href="./index.php?c=appm&w=<{$ppreweek}>">上一週</a>&nbsp;&nbsp;<a style="margin-top:5px;"  href="./index.php?c=appm&w=<{$nextweek}>">下一週</a></div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+<script language="javascript">
+$(function(){
+    
+    $(".content_menu").KandyTabs({
+		trigger:"click",
+		except:".tip", 
+		current:<{$smarty.session.index}>,
+		custom :function(b,c,t,d){
+			//alert($('#'+(t+ 1 )).html());
+			//alert($(b[t]).attr('id'));
+			//alert($(c[t]).attr('id'));
+			var a = $(c[t]).find('.table');
+			//alert(a.length);
+			var id = $(b[t]).attr('id');
+			$('#eid').val(id)
+			if(a.length==0){
+			  var obj = new Object();
+			  obj.index = parseInt(t)+1;
+			  obj.id=id;
+			  if(id>0)
+			  $.post('<{spUrl c=ajax a=getappm}>', obj, function(result){
+				  
+				  
+				  $(c[t]).html(result);
+			  })
+			  else
+			  $.post('<{spUrl c=ajax a=getapptotal}>', obj, function(result){
+				  
+				  
+				  $(c[t]).html(result);
+			  })
+			}
+			
+		}
+		});
+		$('td').live('click',function(){
+			var cl = $(this).parent().attr('class');
+			var id = $('#eid').val();
+			var newclass = $(this).parent().attr('id')+id;
+			var phd = $(this).parent().attr('id');
+			if(cl!='add')
+			{
+				
+				return false;
+			}
+			if($('.'+newclass).length>0&&$('.'+newclass).is(':visible'))
+			{
+				$('.'+newclass).hide();
+			}else if($('.'+newclass).length>0&&!$('.'+newclass).is(':visible'))
+			{
+				$('.'+newclass).show();
+			}else{
+				var obj = new Object();
+				obj.id=id;
+				obj.classname=newclass;
+				obj.p=phd;
+				obj.self = this;
+				$.post('<{spUrl c=ajax a=getappmcust}>', obj, function(result){
+				  $(obj.self).parent().after(result);
+				  //alert(result);
+				  //alert(obj.id);
+				  //$('#'.phd).after(result);
+			  })
+			    //var str="<tr class='"+newclass+"' bgcolor='#cccccc'><td></td><td>$</td><td>$</td><td>$</td><td></td><td></td><td></td><td></td></tr><tr class='"+newclass+"' bgcolor='#cccccc'><td></td><td>$</td><td>$</td><td>$</td><td></td><td></td><td></td><td></td></tr>";
+			    
+			}
+		})
+   
+		<{if $ttid eq 0}>
+				$('.t').click();
+		 <{/if}>
+  })
+function delHtmlTag(str)
+   {
+        return str.replace(/<[^>]+>/g,"");//去掉所有的html标记
+   }
+  function updateaim(ts){
+		 if(!(/^[-]?\d+$/.test(delHtmlTag($(ts).html())))){
+		   alert("輸入無效字符");
+		   return false;
+		 }else if($(ts).html()<0)
+		 {
+		   alert("輸入無效字符");
+		   return false;
+		 }
+		 var id = $(ts).attr('sid')
+		 var w =$(ts).attr('wid');
+		 var t = $(ts).attr('t');
+
+		 var value= delHtmlTag($(ts).html());
+		 var obj = new Object();  
+	     obj.id=id;
+		 obj.w =w;
+		 obj.v = value;
+		 obj.t=t;
+		 obj.self=ts;
+		 $.post('<{spUrl c=ajax a=updateappaim}>', obj, function(result){
+				  var tdobjs = $(obj.self).parent().parent().children('td');
+				  //alert(result);
+				  var r = Math.round(value/5);
+				  $(tdobjs[9]).html(r);
+				  for(var i=0;i<10;i++)
+				  {
+					  if(i>0&&i<8)
+					  {
+						  if($(tdobjs[i]).html()<r)
+						  {
+							  $(tdobjs[i]).css('color','red');
+						  }else{
+							   $(tdobjs[i]).css('color','black');
+						  }
+					  }
+					  if(i==8)
+					  {
+						  if(parseInt($(tdobjs[i]).html())<parseInt(value))
+						  {
+							  $(tdobjs[i]).css('color','red');
+						  }else{
+							   $(tdobjs[i]).css('color','black');
+						  }
+					  }
+					  
+				  }
+				 // $(c[t]).html(result);
+			  })
+		 
+	  }
+</script>

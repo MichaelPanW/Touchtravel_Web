@@ -1,0 +1,26 @@
+<include file="Public:header" />
+<div class="fix_content">
+    <div class="container ">
+        <div class="btn-group page_div">
+            {$pageShowA}</div>
+        <ul class="nav nav-sidebar">
+            <foreach name="article" item="vo">
+                <li class="article_content">
+                    <a href="{:u('Index/show')}?id={$vo.package_id}">
+                        <h4>
+                        <span class="label label-warning">{$vo.package_local}</span>
+            {$vo[package_title]}
+            </h4>
+                        <p>{$vo['package_string']|mb_substr=0,100,'utf-8'}</p>
+                    </a>
+                </li>
+            </foreach>
+        </ul>
+        <div class="btn-group pull-right page_div">
+            {$pageShowA}</div>
+        <br>
+    </div>
+</div>
+<include file="Public:footer" />
+<script>
+</script>

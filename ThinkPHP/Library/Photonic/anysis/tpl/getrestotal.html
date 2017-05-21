@@ -1,0 +1,15 @@
+<table class="table">
+     <tr class="gray"><th style="width:8%;"></th><th style="width:8%;">一</th><th style="width:8%;">二</th><th style="width:8%;">三</th><th style="width:8%;">四</th><th style="width:8%;">五</th><th style="width:8%;color:red;">六</th><th style="width:8%;color:red;">日</th><th>合約總數</th><th>平均目標訪問數</th><th>目標訪問數</th></tr>
+     <tbody class="result">
+
+   <{foreach from=$newcm item=item key=key}>
+      <tr bgcolor="<{cycle values="#eeeeee,#d0d0d0"}>">
+      <td align="right"><{$sales.$key}></td>
+      <{foreach from=$item item=one key=keysec}>
+      <td><{$one}></td>
+      <{/foreach}>
+      </tr> 
+   <{/foreach}>
+
+     </tbody>
+  </table>

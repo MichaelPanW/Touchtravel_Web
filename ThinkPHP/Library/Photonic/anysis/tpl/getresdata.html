@@ -1,0 +1,14 @@
+<table class="table">
+     <tr class="gray"><th style="width:11%;"></th><th style="width:11%;">一</th><th style="width:11%;">二</th><th style="width:11%;">三</th><th style="width:11%;">四</th><th style="width:11%;">五</th><th style="width:11%; color:red;">六</th><th style="width:11%;color:red;">日</th><th>總合約數</th></tr>
+     <tbody class="result">
+     <tr id="d1" class="color1">
+     <td>合約數</td>
+      <{foreach from=$newcm item=item}>
+     <td><{$item.count}></td>
+     <{/foreach}>
+     <td><{$sum}></td>
+     </tr>
+     <{$str}>
+     
+     </tbody>
+  </table>

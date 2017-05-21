@@ -1,0 +1,25 @@
+<include file="Public:header" />
+<link rel="amphtml" href="{:u('index/amp')}?id={$_GET['id']}">
+<div class="container fix_content">
+    <a href="{:u('Index/index')}?class={$article.package_local}"><span class="label label-warning">{$article.package_local}</span></a>
+    <h2>{$article[package_title]}</h2>
+    <div >
+        <foreach name="package" item="vo">
+            <div class="media article_content">
+                <div class="media-left cover_img " href="#">
+                <if condition="$vo[sit_picture] eq ''">
+                    <img src="__PUBLIC__/image/logo.png" alt="{$vo.sit_name}" class="content_img  ">
+                <else />
+                    <img src="{$vo.sit_picture}" alt="{$vo.sit_name}" class="content_img ">
+                    </if>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{$vo.sit_name}</h4>
+                    {$vo.sit_content}
+                </div>
+            </div>
+        </foreach>
+    </div>
+    <br>
+</div>
+<include file="Public:footer" />
